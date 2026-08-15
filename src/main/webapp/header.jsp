@@ -2,15 +2,15 @@
     pageEncoding="UTF-8"%>
 
 <!-- 상단바 조각 파일 -->
-<div class="header-backgroud";>
+<div class="d-flex justify-content-between align-items-center p-5 border-bottom border-3">
     
     <% String loginUser = (String)session.getAttribute("userId"); %>
     
-    <div class="header-left">
+    <div class="header-left m-3 text-center">
     	<a href="main.jsp" class="header-link">홈</a> <!-- 메인로고 제일 왼쪽-->
     </div>
     
-    <div class="header-right">
+    <div class="header-right m-3 text-center">
     <% if(loginUser != null){ %>
     	<a href="addStore.jsp" class="header-link">가게 추가</a> <!-- 왼쪽3 -경- -->
     	<a href="myPage.jsp" class="header-link">마이페이지</a> 
