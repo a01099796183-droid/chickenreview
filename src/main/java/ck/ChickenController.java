@@ -11,13 +11,13 @@ import java.io.IOException;
  * Servlet implementation class chickenController
  */
 @WebServlet("/chickenController")
-public class chickenController extends HttpServlet {
+public class ChickenController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public chickenController() {
+    public ChickenController() {
         super();
         // TODO Auto-generated constructor stub
     }
