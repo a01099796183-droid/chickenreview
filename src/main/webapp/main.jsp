@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<link rel="stylesheet" href="allPage.css"><!-- css파일 불러오기 -->	
 	<%@ include file="header.jsp" %>
-
+	
 
 </body>
 </html>

@@ -6,11 +6,11 @@
     
     <% String loginUser = (String)session.getAttribute("userId"); %>
     
-    <div class="header-right">
-    	<a href="main.jsp" class="header-link">홈</a> <!-- 메인로고 제일 오른쪽-->
-    <div>
-    
     <div class="header-left">
+    	<a href="main.jsp" class="header-link">홈</a> <!-- 메인로고 제일 왼쪽-->
+    </div>
+    
+    <div class="header-right">
     <% if(loginUser != null){ %>
     	<a href="addStore.jsp" class="header-link">가게 추가</a> <!-- 왼쪽3 -경- -->
     	<a href="myPage.jsp" class="header-link">마이페이지</a> 
@@ -18,7 +18,8 @@
     <% }else{ %>
     	<a href="login.jsp" class="header-link">가게 추가</a> <!-- 로그인 안된 상황 -천-  -->
     	<a href="login.jsp" class="header-link">마이페이지</a> 
-    	<a href="login.jsp" class="header-link">로그인</a>	<!-- 제일 왼쪽 -천- -->
+    	<a href="login.jsp" class="header-link">로그인</a>	<!-- 제일 오른쪽 -천- -->
     <% } %>
-    <div>
+    </div>
+    
 </div>
