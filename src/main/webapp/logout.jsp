@@ -9,8 +9,9 @@
 	<link rel="stylesheet" href="allPage.css"><!-- css파일 불러오기 -->
 </head>
 <body>
-
 	<%@ include file="header.jsp" %>
+	
+
 	
 </body>
 </html>
