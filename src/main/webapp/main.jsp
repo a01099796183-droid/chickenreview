@@ -8,10 +8,10 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="allPage.css"><!-- css파일 불러오기 -->
 </head>
-<body>
-		
+<body>	
 	<%@ include file="header.jsp" %>
-	
+	<%@ include file="footer.jsp" %>
+	<%@ include file="sideAd.jsp" %>
 
 </body>
-</html>
+</html>	

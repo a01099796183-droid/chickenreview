@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!-- 상단바 조각 파일 -->
+<!-- 상단바 -->
 <div class="d-flex justify-content-between align-items-center p-5 border-bottom border-3">
     
     <% String loginUser = (String)session.getAttribute("userId"); %>

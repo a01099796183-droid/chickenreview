@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* 1. 상단 헤더 전체 틀 (좌우로 쫙 찢어놓고 배경색 주기) */
+/* 1. 상단 헤더 전체 틀 (좌우로 찢고 배경색 주기) */
 .header-backgroud {
     display: flex;                      
     justify-content: space-between;    
@@ -16,7 +16,7 @@
     font-weight: bold;                 
 }
 
-/* 3. 헤더 안의 왼쪽 상단 버튼 위치잡기*/
+/* 3. 헤더 안의 왼쪽 상단 버튼 위치잡기 -> 나중에 그림으로 바꿔야함*/
 .header-left {
     display: flex;
     align-items: center;
@@ -35,4 +35,22 @@
 .header-link:hover {
     color: #FF9800;
 }
+
+/* 이스터에그 */
+.footer-left{
+    display: flex;
+    align-items: center;                 
+    color: white;                 
+}
+
+/* 조이름 쓰기? */
+.footer-right {
+	display: flex;
+    align-items: center;                 
+    color: gray;
+    font-size: 10px;   
+}
+
+
+/* 옆면 광고칸  */
 
