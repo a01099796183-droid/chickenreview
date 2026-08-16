@@ -74,6 +74,7 @@ public class ChickenController extends HttpServlet {
          case "/storeReview.do":
              page = "storeReview.jsp";
              break;
+             
          case "/addStore.do":
             page = "addStore.jsp";
             break;
