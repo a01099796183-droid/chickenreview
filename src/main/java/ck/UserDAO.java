@@ -7,6 +7,8 @@ import ck.DBUtil;
 
 public class UserDAO {
 	
+	
+	
 	public boolean loginCheck(String userId, String userPw) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -37,5 +39,35 @@ public class UserDAO {
 		}
 		
 		return isLogin; 
+	}
+	
+	public boolean insertUser(dto.UserDTO user) {
+	    boolean isSuccess = false;
+	    
+	    try (Connection conn = DBUtil.getConnection()) { // 디비연결
+	       
+	        String sql = "INSERT INTO userInfor "
+	                   + "(user_id, user_name, user_pw, user_address, user_phone) "
+	                   + "VALUES (?, ?, ?, ?, ?)"; 
+	        
+	        PreparedStatement psmt = conn.prepareStatement(sql);
+	        
+	        psmt.setString(1, user.getUserId());
+	        psmt.setString(2, user.getUserPw());
+	        psmt.setString(3, user.getUserName());
+	        psmt.setString(4, user.getUserAddress());
+	        psmt.setString(5, user.getUserPhone());
+	      
+	        int result = psmt.executeUpdate(); 
+	        
+	        if (result > 0) {
+	            isSuccess = true; 
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } 
+
+	    return isSuccess; 
 	}
 }
