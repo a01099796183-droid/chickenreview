@@ -74,10 +74,8 @@ public class ChickenController extends HttpServlet {
 			// DAO 객체 생성
 			UserDAO dao = new UserDAO();
 			// 매서드 호출
-			Boolean isSuccess = dao.insertUser(user);
-		    
+			boolean isSuccess = dao.insertUser(user);
 		    if (isSuccess) {
-		        req.getSession().setAttribute("userId", userId);
 		        resp.sendRedirect("login.do"); 
 		        return; 
 		    } else {
@@ -98,8 +96,23 @@ public class ChickenController extends HttpServlet {
              break;}
 
          case "/storeReview.do":{
-             page = "storeReview.jsp";
-             break;}
+        	 
+        	  // 1. main.jsp에서 보낸 storeId 받기
+        	    String storeId = req.getParameter("storeId");
+
+        	    // 2. StoreDAO 객체 생성
+        	    StoreDAO dao = new StoreDAO();
+
+        	    // 3. storeId에 해당하는 매장 하나를 DB에서 가져오기
+        	    dto.StoreDTO store = dao.getStoreById(storeId);
+
+        	    // 4. 가져온 매장 정보를 request에 저장
+        	    req.setAttribute("store", store);
+
+        	    // 5. 리뷰 페이지로 이동
+        	    page = "storeReview.jsp";
+        	    break;}
+         				
          
          case "/addStore.do":{
             page = "addStore.jsp";

@@ -53,8 +53,8 @@ public class UserDAO {
 	        PreparedStatement psmt = conn.prepareStatement(sql);
 	        
 	        psmt.setString(1, user.getUserId());
-	        psmt.setString(2, user.getUserPw());
-	        psmt.setString(3, user.getUserName());
+	        psmt.setString(2, user.getUserName());
+	        psmt.setString(3, user.getUserPw());
 	        psmt.setString(4, user.getUserAddress());
 	        psmt.setString(5, user.getUserPhone());
 	      

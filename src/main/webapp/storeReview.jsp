@@ -11,5 +11,25 @@
 <body>
 	<%@ include file="header.jsp" %>
 
+		
+	<div class="storeReview-name">
+		<h2>${store.storeName}</h2>
+	</div>
+
+	<div class="store-info">	
+		<p>${store.storeAddress}</p>
+		<p>${store.storePhone}</p>
+	</div>
+
+
+
+
+	<!-- input 등록 / 취소 -->
+	<!-- dif -->
+
+
+
+
+
 </body>
 </html>

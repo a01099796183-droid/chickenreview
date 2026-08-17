@@ -54,3 +54,111 @@
 
 /* 옆면 광고칸  */
 
+
+
+
+
+
+/* 메인 페이지 */
+.main-container {
+    width: 900px;
+    margin: 10px auto;
+}
+
+.main-banner {
+    height: 120px;
+    background-color: #5b9bd5;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.banner-image {
+    width: 180px;
+    height: 90px;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*메인 치킨 배너 사진 사이즈*/
+
+.banner-image a {
+    display: block; /*글자가 아닌 이미지 전체 클릭할 수 있는 박스로 만듦*/
+    width: 100%;
+    height: 100%;
+}
+
+.banner-image img {
+	display: block;
+	width : 100%;
+	height : 100%;
+}
+
+
+/*메인 검색창*/
+
+.search-area {
+	width:100%;
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.search-input {
+    flex: 1; /*남는 공간 다 먹을게(버튼 140/ gap 20 지정빼고)*/
+    height: 60px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.search-button {
+    width: 140px;
+    height: 60px;
+    font-size: 20px;
+}
+
+/* 메인 매장 목록 */
+
+.store-list {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.store-item {
+    height: 70px;
+    margin-bottom: 15px;
+    border: 1px solid;
+
+    display: flex;
+    align-items: center;
+}
+
+.store-thumb {
+    width: 100px;
+    height: 50px;
+    margin-left: 15px;
+    background-color: #e2f0d9;
+}
+
+.store-name {
+    flex: 1;
+    text-align: center;
+    font-size: 22px;
+}
+ 
+ .storeReview-name{
+   text-align: center;
+ }
+ 
+ 
+ .store-info {
+ 	display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-right: 15px;
+ 	
+ }

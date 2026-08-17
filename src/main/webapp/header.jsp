@@ -12,7 +12,7 @@
     
     <div class="header-right m-3 text-center">
     <% if(loginUser != null){ %>
-    	<a href="addStore.do" class="header-link">가게 추가</a></a> <!-- 왼쪽3 -경- -->
+    	<a href="addStore.do" class="header-link">가게 추가</a> <!-- 왼쪽3 -경- -->
     	<a href="myPage.do" class="header-link">마이페이지</a> 
     	<a href="logout.do" class="header-link">로그아웃</a>  <!-- 로그아웃으로 가야함 -천- -->
     <% }else{ %>
