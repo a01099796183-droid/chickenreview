@@ -10,10 +10,13 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.Session;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.io.PrintWriter;
 
 import dto.UserDTO;
 
+=======
+>>>>>>> refs/remotes/origin/main
 @WebServlet("*.do")
 public class ChickenController extends HttpServlet {
    
@@ -23,20 +26,25 @@ public class ChickenController extends HttpServlet {
       String requestUri = uri.substring(uri.lastIndexOf("/"), uri.length()); 
       System.out.println("requestUri=" + requestUri); 
 
+<<<<<<< HEAD
 	  switch (requestUri) {
          case "/main.do":
+=======
+      switch (requestUri) {
+         case "/main.do":{
+>>>>>>> refs/remotes/origin/main
             // 1. 로그인, 회원가입, 지점 보이게
             // 2. 지점 누르면 지점 리뷰페이지 이동
             // 3. 
             page = "main.jsp";
-            break;
+            break;}
 
-         case "/login.do":
+         case "/login.do":{
             // 단순 로그인 페이지 이동
             page = "login.jsp";
-            break;
+            break;}
             
-         case "/loginAction.do":
+         case "/loginAction.do":{
             // 입력한 아이디/비밀번호 객체 추출
             String userId = req.getParameter("userId");
             String userPw = req.getParameter("userPw");
@@ -52,39 +60,92 @@ public class ChickenController extends HttpServlet {
             	req.setAttribute("msg", "아이디 또는 비밀번호가 틀렸습니다.");
                 page = "login.jsp";
             }
-            break;
+            break;}
             // 
 
-         case "/signUp.do":
+         case "/signUp.do":{
             // 단순 회원가입 페이지 이동
             page = "signUp.jsp";
-            break;
+            break;}
 
-         case "/insertUser.do":
-            // UserDAO를 통한 회원가입 DB 처리 진행
-            page = "login.jsp"; // 회원가입 후 로그인 페이지로 이동
-            break;
+     	case "/insertUser.do":{
+			// 클라이언트가 입력한 값 추출
+			String userId = req.getParameter("userId");
+			String userPw = req.getParameter("userPw");
+			String userName = req.getParameter("userName");
+			String userAddress = req.getParameter("userAddress");
+			String userPhone = req.getParameter("userPhone");
+			
+			// 추출한 값 객체에 저장
+			dto.UserDTO user = new dto.UserDTO();
+			user.setUserId(userId);
+			user.setUserPw(userPw);
+			user.setUserName(userName);
+			user.setUserAddress(userAddress);
+			user.setUserPhone(userPhone);
+			
+			// DAO 객체 생성
+			UserDAO dao = new UserDAO();
+			// 매서드 호출
+			boolean isSuccess = dao.insertUser(user);
+		    if (isSuccess) {
+		        resp.sendRedirect("login.do"); 
+		        return; 
+		    } else {
+		        req.setAttribute("msg", "회원가입에 실패했습니다.");
+		        page = "/signUp.jsp"; 
+		    }
+		    break;
+		}
             
+<<<<<<< HEAD
          case "/myPage.do":
+=======
+         case "/mypage.do":{
+>>>>>>> refs/remotes/origin/main
              page = "myPage.jsp";
-             break;
+             break;}
 
-         case "/logout.do":
+         case "/logout.do":{
              // 로그아웃 시 세션 제거 후 메인 화면으로 이동
              req.getSession().invalidate();
              page = "main.jsp";
-             break;
+             break;}
 
+<<<<<<< HEAD
          case "/storeReview.do":
              page = "storeReview.jsp";
              break;
              
          case "/addStore.do":
-            page = "addStore.jsp";
-            break;
+=======
+         case "/storeReview.do":{
+        	 
+        	  // 1. main.jsp에서 보낸 storeId 받기
+        	    String storeId = req.getParameter("storeId");
 
-         case "/edit.do":
+        	    // 2. StoreDAO 객체 생성
+        	    StoreDAO dao = new StoreDAO();
+
+        	    // 3. storeId에 해당하는 매장 하나를 DB에서 가져오기
+        	    dto.StoreDTO store = dao.getStoreById(storeId);
+
+        	    // 4. 가져온 매장 정보를 request에 저장
+        	    req.setAttribute("store", store);
+
+        	    // 5. 리뷰 페이지로 이동
+        	    page = "storeReview.jsp";
+        	    break;}
+         				
+         
+         case "/addStore.do":{
+>>>>>>> refs/remotes/origin/main
+            page = "addStore.jsp";
+            break;}
+
+         case "/edit.do":{
             page = "edit.jsp";
+<<<<<<< HEAD
             break;
             
          case "/editAction.do":
@@ -127,6 +188,9 @@ public class ChickenController extends HttpServlet {
                  resp.sendRedirect("edit.do");
              }
              break;
+=======
+            break;}
+>>>>>>> refs/remotes/origin/main
 
          default:
             page = "main.jsp";
