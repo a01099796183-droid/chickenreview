@@ -14,38 +14,43 @@
 		<table class="table table-bordered text-center align-middle w-50 mx-auto mt-5">
 			
 			<tr>
-				<td class="bg-light fw-bold">회원 정보 수정</td>
+				<td class="bg-light text-center fw-bold fs-5 py-3" colspan="2">회원 정보 수정</td>
 			</tr>
 			<tr>
 		        <td class="bg-light fw-bold" style="width: 20%;">이름</td>
 		        <td style="width: 50%;">
-		            <input type="text" name="userName" class="form-control">
+		            <input type="text" name="userName" value="${user.userName}" class="form-control" required>
 		        </td>
 		    </tr>
 		    <tr>
 		        <td class="bg-light fw-bold" style="width: 20%;">ID</td>
 		        <td style="width: 50%;">
-		            <input type="text" name="userId" class="form-control">
+		            <input type="text" name="userId" value="${user.userId}" class="form-control" required>
 		        </td>
 		    </tr>
 		    <tr>
 		        <td class="bg-light fw-bold" style="width: 20%;">PW</td>
 		        <td style="width: 50%;">
-		            <input type="text" name="userPw" class="form-control">
+		            <input type="password" name="userPw" value="${user.userPw}" class="form-control" required>
 		        </td>
 		    </tr>
 		    <tr>
 		        <td class="bg-light fw-bold" style="width: 20%;">주소</td>
 		        <td style="width: 50%;">
-		            <input type="text" name="userAddress" class="form-control">
+		            <input type="text" name="userAddress" value="${user.userAddress}" class="form-control">
 		        </td>
 		    </tr>
 		    <tr>
 		        <td class="bg-light fw-bold" style="width: 20%;">전화번호</td>
 		        <td style="width: 50%;">
-		            <input type="text" name="userPhone" class="form-control">
+		            <input type="text" name="userPhone" value="${user.userPhone}" class="form-control">
 		        </td>
 		    </tr>
+		    <tr>
+		    	<td colspan="2">
+                    <button type="submit" class="btn btn-primary w-100">수정</button>
+                </td>
+            </tr>
 		</table>
 	</form>
 
