@@ -10,14 +10,14 @@ public class UserDTO {
 		    user_phone VARCHAR(20) NOT NULL
 	*/
 	
-	private int userManageId;
+	private static int userManageId;
 	private String userId;
 	private String userName;
 	private String userPw;
 	private String userAddress;
 	private String userPhone;
 	
-	public int getUserManageId() {
+	public static int getUserManageId() {
 		return userManageId;
 	}
 	public void setUserManageId(int userManageId) {

@@ -10,11 +10,11 @@ public class UserDAO {
 	
 	
 	
-	public boolean loginCheck(String userId, String userPw) {
+	public UserDTO loginCheck(String userId, String userPw) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean isLogin = false; 
+		UserDTO user = null; 
 		
 		try {
 			conn = DBUtil.getConnection();
@@ -27,9 +27,12 @@ public class UserDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				isLogin = true; 
-			}
+			if (rs.next()) {
+	            user = new UserDTO();
+	            user.setUserManageId(rs.getInt("user_manage_id"));
+	            user.setUserId(rs.getString("user_id"));
+	            user.setUserName(rs.getString("user_name"));
+	        }
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,21 +42,23 @@ public class UserDAO {
 			try { if(conn != null) conn.close(); } catch(Exception e) {}
 		}
 		
-		return isLogin; 
+		return user; 
 	}
 	
 
 	public int updateUser(UserDTO user) {
-	    String sql = "UPDATE member SET user_name = ?, user_pw = ?, user_address = ?, user_phone = ? WHERE user_id = ?";
+	    String sql = "UPDATE UserInfor SET user_id = ?, user_name = ?, user_pw = ?, user_address = ?, user_phone = ? WHERE user_m_id = ?";
 	    
 	    try (Connection conn = DBUtil.getConnection();
 	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	        
-	        pstmt.setString(1, user.getUserName());
-	        pstmt.setString(2, user.getUserId());
+	    	pstmt.setString(1, user.getUserId());
+	        pstmt.setString(2, user.getUserName());
 	        pstmt.setString(3, user.getUserPw());
 	        pstmt.setString(4, user.getUserAddress());
 	        pstmt.setString(5, user.getUserPhone());
+	        pstmt.setInt(6, user.getUserManageId());
+	        
 	        
 	        return pstmt.executeUpdate();
 	    } catch (Exception e) {

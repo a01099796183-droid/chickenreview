@@ -30,10 +30,6 @@ public class ChickenController extends HttpServlet {
       String requestUri = uri.substring(uri.lastIndexOf("/"), uri.length()); 
       System.out.println("requestUri=" + requestUri); 
 
-
-	  switch (requestUri) {
-         case "/main.do":
-
       switch (requestUri) {
          case "/main.do":{
 
@@ -54,17 +50,21 @@ public class ChickenController extends HttpServlet {
             String userPw = req.getParameter("userPw");
             
             ck.UserDAO dao = new ck.UserDAO();
-            boolean isSuccess = dao.loginCheck(userId, userPw);
+            //boolean isSuccess = dao.loginCheck(userId, userPw);
+            UserDTO loginUser = dao.loginCheck(userId, userPw);
             
-            if(isSuccess == true) {
+            if(loginUser != null) {
+            	req.getSession().setAttribute("userManageId", loginUser.getUserManageId());
             	req.getSession().setAttribute("userId", userId);
+            	
             	resp.sendRedirect("main.do");
             	return;
             } else {
             	req.setAttribute("msg", "아이디 또는 비밀번호가 틀렸습니다.");
                 page = "login.jsp";
             }
-            break;}
+            break;
+         }
             // 
 
          case "/signUp.do":{
@@ -101,12 +101,8 @@ public class ChickenController extends HttpServlet {
 		    }
 		    break;
 		}
-            
 
-         case "/myPage.do":
-
-         case "/mypage.do":{
-
+         case "/myPage.do":{
              page = "myPage.jsp";
              break;
          }
@@ -120,8 +116,7 @@ public class ChickenController extends HttpServlet {
              
 
          case "/storeReview.do":{
-        	 
-        	 
+
         	    String storeId = req.getParameter("storeId");     	    
         	    
         	    //매장 정보
@@ -137,8 +132,7 @@ public class ChickenController extends HttpServlet {
         	    //jsp에 전달
         	    req.setAttribute("store", store);
         	    req.setAttribute("reviewList", reviewList);
-
-        	
+        	    
         	    page = "storeReview.jsp";
         	    break;
          }
@@ -158,6 +152,7 @@ public class ChickenController extends HttpServlet {
         	 HttpSession session = req.getSession();
         	 
         	 Integer userManageId = (Integer) session.getAttribute("userManageId");
+        	 System.out.println(userManageId);
         	 if (userManageId == null) {
         		 resp.setContentType("text/html; charset=UTF-8");
         		 PrintWriter out = resp.getWriter();
@@ -195,14 +190,13 @@ public class ChickenController extends HttpServlet {
              }
              break;
 
+         default:
+        	 page = "main.jsp";
+        	 break;
          }
 
-
-         default:
-            page = "main.jsp";
-            break;
-      } 
       RequestDispatcher rd = req.getRequestDispatcher(page);
       rd.forward(req, resp);
+   	 
    }
 }
