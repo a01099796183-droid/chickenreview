@@ -3,7 +3,8 @@ package ck;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import ck.DBUtil; 
+import ck.DBUtil;
+import dto.UserDTO; 
 
 public class UserDAO {
 	
@@ -41,6 +42,26 @@ public class UserDAO {
 		return isLogin; 
 	}
 	
+
+	public int updateUser(UserDTO user) {
+	    String sql = "UPDATE member SET user_name = ?, user_pw = ?, user_address = ?, user_phone = ? WHERE user_id = ?";
+	    
+	    try (Connection conn = DBUtil.getConnection();
+	         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+	        
+	        pstmt.setString(1, user.getUserName());
+	        pstmt.setString(2, user.getUserId());
+	        pstmt.setString(3, user.getUserPw());
+	        pstmt.setString(4, user.getUserAddress());
+	        pstmt.setString(5, user.getUserPhone());
+	        
+	        return pstmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return 0;
+	}
+
 	public boolean insertUser(dto.UserDTO user) {
 	    boolean isSuccess = false;
 	    

@@ -11,6 +11,24 @@
 <body>
 
 	<%@ include file="header.jsp" %>
+	
+	<table class="table table-bordered text-center align-middle w-50 mx-auto mt-5">
+        <tr>
+            <td class="bg-light p-0">
+                <a href="edit.do" class="btn btn-outline-dark w-100 py-3 fw-bold fs-5 text-decoration-none rounded-0 border-0">
+                    회원 정보 수정
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="bg-light p-0">
+                <a href="addStore.do" class="btn btn-outline-dark w-100 py-3 fw-bold fs-5 text-decoration-none rounded-0 border-0">
+                    지점 추가 신청
+                </a>
+            </td>
+        </tr>
+	</table>
+	
 
 </body>
 </html>
