@@ -162,3 +162,42 @@
     margin-right: 15px;
  	
  }
+ 
+ 
+ 
+ /*리뷰 내용*/
+ 
+ .review-item {
+ 	width: 50%;
+ 	height: 55px;
+ 	margin: 10px auto;
+ 	border: 1px solid;
+ 	margin-bottom: 20px;
+ 	align-items: center;
+ 	
+ 	display:flex;
+ }
+ 
+ 
+ .review-rating {
+    width: 90px;
+    height: 40px;
+
+    margin-left: 10px;
+
+    background-color: #e2f0d9;
+    border: 1px solid;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.review-content {
+    flex: 1;
+    margin-left: 150px;
+}
+ 
+ 

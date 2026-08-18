@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.websocket.Session;
 
 import java.io.IOException;
+import java.util.List;
 @WebServlet("*.do")
 public class ChickenController extends HttpServlet {
    
@@ -97,19 +98,24 @@ public class ChickenController extends HttpServlet {
 
          case "/storeReview.do":{
         	 
-        	  // 1. main.jsp에서 보낸 storeId 받기
-        	    String storeId = req.getParameter("storeId");
+        	 
+        	    String storeId = req.getParameter("storeId");     	    
+        	    
+        	    //매장 정보
+        	    StoreDAO storedao = new StoreDAO();
+        	    dto.StoreDTO store = storedao.getStoreById(storeId);
+        	    
+        	    //리뷰 목록
+        	    ReviewDAO reviewdao = new ReviewDAO();
+        	    List<dto.ReviewDTO> reviewList = reviewdao.getReviewByStoreId(storeId);
 
-        	    // 2. StoreDAO 객체 생성
-        	    StoreDAO dao = new StoreDAO();
-
-        	    // 3. storeId에 해당하는 매장 하나를 DB에서 가져오기
-        	    dto.StoreDTO store = dao.getStoreById(storeId);
-
-        	    // 4. 가져온 매장 정보를 request에 저장
+        	    System.out.println("리뷰 개수 = " + reviewList.size());
+        	    
+        	    //jsp에 전달
         	    req.setAttribute("store", store);
+        	    req.setAttribute("reviewList", reviewList);
 
-        	    // 5. 리뷰 페이지로 이동
+        	
         	    page = "storeReview.jsp";
         	    break;}
          				

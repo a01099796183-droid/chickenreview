@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,23 @@
 		<p>${store.storeAddress}</p>
 		<p>${store.storePhone}</p>
 	</div>
+
+	
+	<c:forEach var="review" items="${reviewList}">
+		
+		<div class="review-item">
+			<div class="review-rating">
+				<p>${review.userRating}</p> 
+			</div>
+				
+			<div class="review-content">
+				<p>${review.userReview}</p> 
+			</div>
+		</div>
+		
+	</c:forEach>
+	
+
 
 
 
