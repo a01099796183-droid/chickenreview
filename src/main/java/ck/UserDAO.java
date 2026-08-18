@@ -42,7 +42,7 @@ public class UserDAO {
 		return isLogin; 
 	}
 	
-<<<<<<< HEAD
+
 	public int updateUser(UserDTO user) {
 	    String sql = "UPDATE member SET user_name = ?, user_pw = ?, user_address = ?, user_phone = ? WHERE user_id = ?";
 	    
@@ -60,7 +60,8 @@ public class UserDAO {
 	        e.printStackTrace();
 	    }
 	    return 0;
-=======
+	}
+
 	public boolean insertUser(dto.UserDTO user) {
 	    boolean isSuccess = false;
 	    
@@ -89,6 +90,5 @@ public class UserDAO {
 	    } 
 
 	    return isSuccess; 
->>>>>>> refs/remotes/origin/main
 	}
 }

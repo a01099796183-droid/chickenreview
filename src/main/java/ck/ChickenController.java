@@ -10,13 +10,13 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.Session;
 
 import java.io.IOException;
-<<<<<<< HEAD
+
 import java.io.PrintWriter;
 
 import dto.UserDTO;
 
-=======
->>>>>>> refs/remotes/origin/main
+
+
 @WebServlet("*.do")
 public class ChickenController extends HttpServlet {
    
@@ -26,13 +26,13 @@ public class ChickenController extends HttpServlet {
       String requestUri = uri.substring(uri.lastIndexOf("/"), uri.length()); 
       System.out.println("requestUri=" + requestUri); 
 
-<<<<<<< HEAD
+
 	  switch (requestUri) {
          case "/main.do":
-=======
+
       switch (requestUri) {
          case "/main.do":{
->>>>>>> refs/remotes/origin/main
+
             // 1. 로그인, 회원가입, 지점 보이게
             // 2. 지점 누르면 지점 리뷰페이지 이동
             // 3. 
@@ -98,27 +98,23 @@ public class ChickenController extends HttpServlet {
 		    break;
 		}
             
-<<<<<<< HEAD
+
          case "/myPage.do":
-=======
+
          case "/mypage.do":{
->>>>>>> refs/remotes/origin/main
+
              page = "myPage.jsp";
-             break;}
+             break;
+         }
 
          case "/logout.do":{
              // 로그아웃 시 세션 제거 후 메인 화면으로 이동
              req.getSession().invalidate();
              page = "main.jsp";
-             break;}
-
-<<<<<<< HEAD
-         case "/storeReview.do":
-             page = "storeReview.jsp";
              break;
+         }
              
-         case "/addStore.do":
-=======
+
          case "/storeReview.do":{
         	 
         	  // 1. main.jsp에서 보낸 storeId 받기
@@ -135,18 +131,19 @@ public class ChickenController extends HttpServlet {
 
         	    // 5. 리뷰 페이지로 이동
         	    page = "storeReview.jsp";
-        	    break;}
+        	    break;
+         }
          				
          
          case "/addStore.do":{
->>>>>>> refs/remotes/origin/main
             page = "addStore.jsp";
-            break;}
+            break;
+         }
 
          case "/edit.do":{
             page = "edit.jsp";
-<<<<<<< HEAD
             break;
+         }
             
          case "/editAction.do":
         	 HttpSession session = req.getSession();
@@ -188,9 +185,9 @@ public class ChickenController extends HttpServlet {
                  resp.sendRedirect("edit.do");
              }
              break;
-=======
-            break;}
->>>>>>> refs/remotes/origin/main
+
+         }
+
 
          default:
             page = "main.jsp";
