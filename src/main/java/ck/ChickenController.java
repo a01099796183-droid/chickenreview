@@ -50,7 +50,6 @@ public class ChickenController extends HttpServlet {
             String userPw = req.getParameter("userPw");
             
             ck.UserDAO dao = new ck.UserDAO();
-            //boolean isSuccess = dao.loginCheck(userId, userPw);
             UserDTO loginUser = dao.loginCheck(userId, userPw);
             
             if(loginUser != null) {
