@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+    <%
+    if (request.getAttribute("storeList") == null) {
+        response.sendRedirect("main.do");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +14,7 @@
 <title>Insert title here</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="allPage.css"><!-- css파일 불러오기 -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>	
 	<%@ include file="header.jsp" %>
@@ -17,19 +25,19 @@
 	<div class="main-banner">
 	
 		 <div class="banner-image">
-        <a href="#">
+        <a href="storeReview.do?storeId=3c">
             <img src ="images/kyochon.jpg" alt="교촌치킨">
         </a>
 	    </div>
 	
 	    <div class="banner-image">
-	        <a href="#">
+	        <a href="storeReview.do?storeId=1a">
 	             <img src ="images/bhc.jpg" alt="bhc">
 	        </a>
 	    </div>
 	
 	    <div class="banner-image">
-	        <a href="#">
+	        <a href="storeReview.do?storeId=2b">
 	             <img src ="images/bbq.jpg" alt="bbq">
 	        </a>
   		</div>
@@ -46,48 +54,43 @@
 	
 	</div>
 	
-
-	<div class="store-list">
-	
-		<!-- thum (썸네일의 줄임말 = 대표이미지) -->
-		<a href="storeReview.do?storeId=1a" class="store-link">
-			 <div class="store-item">
-		        <div class="store-thumb"></div>
-		        <div class="store-name">BHC 구로디지털점</div>
-		    </div>
-		</a>
-		
-		<a href="storeReview.do?storeId=2b" class="store-link">
-		    <div class="store-item">
-		        <div class="store-thumb"></div>
-		        <div class="store-name">BBQ 남구로역점</div>
-		    </div>
-		</a>
-		
-		<a href="storeReview.do?storeId=3c" class="store-link">
-		    <div class="store-item">
-		        <div class="store-thumb"></div>
-		        <div class="store-name">교촌치킨 가산디지털점</div>
-		    </div>
-		</a>
-		
-		<a href="storeReview.do?storeId=4d" class="store-link">
-		    <div class="store-item">
-		        <div class="store-thumb"></div>
-		        <div class="store-name">60계치킨 서울가산점</div>
-		    </div>
-		</a>
-		 
-		<a href="storeReview.do?storeId=5e" class="store-link">
-		    <div class="store-item">
-		        <div class="store-thumb"></div>
-		        <div class="store-name">굽네치킨 가산점</div>
-		    </div>
-		</a>	
-		
-	</div>
-
+    <div class="overflow-auto mainEdge bg-light mt-4">
+         <div class="store-list">
+         
+              <c:forEach var="store" items="${storeList}">
+                 <a href="storeReview.do?storeId=${store.storeId}" class="store-link">
+                     <div class="store-item">
+                         <div class="store-thumb"></div>
+                         <div class="store-name">${store.storeName}</div>
+                     </div>
+                 </a>
+             </c:forEach>
+             
+         </div>
+      </div>
 </main>
+
+<script>
+// 1. 검색창에 글자가 입력될 때마다 실행
+$('.search-input').on('input', function() {
+    const keyword = $(this).val(); // 입력된 값 가져오기
+
+    // 2. jQuery AJAX 요청
+    $.ajax({
+        url: 'searchStore.do',
+        type: 'GET',
+        data: { keyword: keyword }, // 서버로 보낼 데이터
+        success: function(html) {
+            // 3. 성공하면 .store-list 내부를 결과로 싹 교체
+            $('.store-list').html(html);
+        },
+        error: function(error) {
+            console.log("에러 발생: ", error);
+        }
+    });
+});
+</script>
+</body>
 	
 
 	<%@ include file="sideAd.jsp" %>
